@@ -1,0 +1,20 @@
+{
+  "name": "ws_ingress_scriptable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --outfile=dist/main.js --platform=neutral --target=es2020",
+    "watch": "esbuild src/main.ts --bundle --outfile=dist/main.js --platform=neutral --target=es2020 --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/scriptable-ios": "^1.7.8",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3"
+  }
+}

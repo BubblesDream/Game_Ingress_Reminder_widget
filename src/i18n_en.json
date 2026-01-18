@@ -1,0 +1,55 @@
+{
+  "title": "INGRESS STREAK",
+  "days_label": "DAYS",
+  "weekly_prefix": "Weekly: ",
+  "weekly_suffix": "",
+  "hack_btn": "HACK",
+  "quotes_before": [
+    "Hack the world.",
+    "Don't break the streak!",
+    "Portals are waiting.",
+    "Just one hack, come on."
+  ],
+  "quotes_after": [
+    "Good job Agent!",
+    "See you tomorrow.",
+    "XM reserves replenished.",
+    "Streak continued!"
+  ],
+  "quotes_before_R": [
+    "Resist the Shapers!",
+    "Keep the skies Blue.",
+    "Freedom is key.",
+    "Stay strong, Resistance."
+  ],
+  "quotes_after_R": [
+    "Strong work, Agent!",
+    "Resistance prevails.",
+    "Blue fields forever.",
+    "Good hack."
+  ],
+  "quotes_before_E": [
+    "Enlighten the world.",
+    "Accept the XM.",
+    "Evolution awaits.",
+    "Expand the green."
+  ],
+  "quotes_after_E": [
+    "Evolution complete.",
+    "Shapers welcome you.",
+    "Green skies ahead.",
+    "Knowledge acquired."
+  ],
+  "event_FS": [
+    "Ingress First Saturday!",
+    "Time to level up!",
+    "Meet local agents.",
+    "IFS: Hack everything."
+  ],
+  "event_SS": [
+    "Second Sunday is here.",
+    "Complete 6 missions.",
+    "Explorer badge awaits.",
+    "Let's walk."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "global": {
+    "background_color": "#1c1c1e",
+    "background_overlay": "#000000",
+    "background_opacity": 0.6
+  },
+  "divider": {
+    "color": "#ffffff",
+    "opacity": 0.3,
+    "width": 1,
+    "height": 70
+  },
+  "header": {
+    "logo_size": 16,
+    "font_name": "boldSystemFont",
+    "font_size": 12,
+    "text_color": "#00ffcc"
+  },
+  "streak": {
+    "number_font_name": "AvenirNext-HeavyItalic",
+    "number_font_size": 42,
+    "number_color": "#ffffff",
+    "label_font_name": "systemFont",
+    "label_font_size": 14,
+    "label_color": "#a0a0a0",
+    "label_opacity": 0.8
+  },
+  "weekly": {
+    "font_name": "mediumSystemFont",
+    "font_size": 13,
+    "text_color": "#a0a0a0"
+  },
+  "button": {
+    "size": 80,
+    "corner_radius": 40,
+    "fallback_bg": "#00ffcc",
+    "fallback_text_color": "#000000",
+    "fallback_font_size": 18
+  },
+  "quote": {
+    "font_name": "mediumSystemFont",
+    "font_size": 10,
+    "text_color": "#ffffff",
+    "opacity": 0.6,
+    "align": "center"
+  },
+  "faction_color": {
+    "R": "#00c2ff",
+    "E": "#00ffcc",
+    "N": "#00ffcc"
+  }
+}

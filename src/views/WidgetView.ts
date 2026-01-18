@@ -7,6 +7,7 @@ export interface ViewContext {
     data: StreakData;
     t: (k: string) => any;
     weeklyCount: number;
+    weeklyProgress: boolean[];
     images: { logo: string; bg: string; btn: string };
     files: FileManager;
     getPath: (f: string) => string;

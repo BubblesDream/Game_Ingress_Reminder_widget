@@ -66,10 +66,28 @@ export class StreakModel {
         this.data.lastDate = todayStr;
         this.data.history.push(todayStr);
 
-        if (this.data.history.length > 60) {
-            this.data.history = this.data.history.slice(-60);
+        if (this.data.history.length > 14) {
+            this.data.history = this.data.history.slice(-14);
         }
         this.save();
+    }
+
+    getWeeklyProgress(): boolean[] {
+        const now = new Date();
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const day = d.getDay();
+        const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Monday
+
+        const progress: boolean[] = [];
+
+        for (let i = 0; i < 7; i++) {
+            const currentDay = new Date(d);
+            currentDay.setDate(diff + i);
+            const dateStr = this.getLocalDateStr(currentDay);
+            progress.push(this.data.history.includes(dateStr));
+        }
+
+        return progress;
     }
 
     getData(): StreakData {

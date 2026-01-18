@@ -23,7 +23,9 @@
     "label_font_name": "systemFont",
     "label_font_size": 14,
     "label_color": "#a0a0a0",
-    "label_opacity": 0.8
+    "label_opacity": 0.8,
+    "circle_inactive_color": "#ffffff",
+    "circle_inactive_opacity": 0.4
   },
   "weekly": {
     "font_name": "mediumSystemFont",

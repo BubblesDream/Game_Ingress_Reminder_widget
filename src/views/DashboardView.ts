@@ -65,6 +65,8 @@ export class DashboardView implements WidgetView {
         let streakNum = streakStack.addText(data.streak.toString());
         streakNum.font = S.getFont("streak", "number_");
         streakNum.textColor = S.getColor("streak", "number_color");
+        streakNum.minimumScaleFactor = 0.25; // Allow scaling down significantly
+        streakNum.lineLimit = 1; // Force single line
         streakStack.addSpacer(4);
         let streakLabel = streakStack.addText(t("days_label"));
         streakLabel.font = S.getFont("streak", "label_");
@@ -73,17 +75,42 @@ export class DashboardView implements WidgetView {
         streakStack.addSpacer(2);
         leftStack.addSpacer(6);
 
-        // Weekly
-        let wTxt = leftStack.addText(t("weekly_prefix") + weeklyCount + t("weekly_suffix"));
-        wTxt.font = S.getFont("weekly", "");
-        wTxt.textColor = S.getColor("weekly", "text_color");
+        // Weekly (7 circles)
+        let weeklyStack = leftStack.addStack();
+        weeklyStack.layoutHorizontally();
+        weeklyStack.centerAlignContent();
+
+        ctx.weeklyProgress.forEach((isHacked, index) => {
+            let circleBox = weeklyStack.addStack();
+            circleBox.size = new Size(18, 18);
+            circleBox.cornerRadius = 9;
+            circleBox.borderWidth = 1;
+
+            // Style based on state
+            const activeColor = S.getColor("streak", "number_color");
+            const inactiveColor = S.getColor("streak", "circle_inactive_color", S.getNum("streak", "circle_inactive_opacity"));
+
+            if (isHacked) {
+                circleBox.backgroundColor = activeColor;
+                circleBox.borderColor = activeColor;
+            } else {
+                circleBox.borderColor = inactiveColor;
+            }
+            circleBox.centerAlignContent();
+
+            let dayText = circleBox.addText((index + 1).toString());
+            dayText.font = Font.boldSystemFont(10);
+            dayText.textColor = isHacked ? Color.black() : inactiveColor;
+
+            weeklyStack.addSpacer(4);
+        });
 
         dashboardStack.addSpacer();
 
         // 分隔線
         let divider = dashboardStack.addStack();
         divider.size = new Size(S.getNum("divider", "width", 1), S.getNum("divider", "height", 70));
-        divider.backgroundColor = S.getColor("divider", "color", S.getNum("divider", "opacity"));
+        divider.backgroundColor = S.getColor("divider", "color", S.getNum("divider", "opacity", 1));
 
         dashboardStack.addSpacer();
 

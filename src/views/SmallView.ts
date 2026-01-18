@@ -49,14 +49,33 @@ export class SmallView implements WidgetView {
 
         mainStack.addSpacer(6);
 
-        // Weekly
-        let weekStack = mainStack.addStack();
-        weekStack.layoutHorizontally();
-        weekStack.addSpacer();
-        let wTxt = weekStack.addText(`W: ${weeklyCount}`);
-        wTxt.font = Font.mediumSystemFont(11);
-        wTxt.textColor = Color.white();
-        wTxt.textOpacity = 0.8;
-        weekStack.addSpacer();
+        // Weekly (7 circles) - Compact for Small View
+        let weeklyStack = mainStack.addStack();
+        weeklyStack.layoutHorizontally();
+        weeklyStack.centerAlignContent();
+
+        ctx.weeklyProgress.forEach((isHacked, index) => {
+            let circleBox = weeklyStack.addStack();
+            circleBox.size = new Size(14, 14); // Smaller size for widget
+            circleBox.cornerRadius = 7;
+            circleBox.borderWidth = 1;
+
+            const activeColor = S.getColor("streak", "number_color");
+            const inactiveColor = S.getColor("streak", "circle_inactive_color", S.getNum("streak", "circle_inactive_opacity", 0.4));
+
+            if (isHacked) {
+                circleBox.backgroundColor = activeColor;
+                circleBox.borderColor = activeColor;
+            } else {
+                circleBox.borderColor = inactiveColor;
+            }
+            circleBox.centerAlignContent();
+
+            let dayText = circleBox.addText((index + 1).toString());
+            dayText.font = Font.boldSystemFont(8); // Smaller font
+            dayText.textColor = isHacked ? Color.black() : inactiveColor;
+
+            weeklyStack.addSpacer(3); // Tighter spacing
+        });
     }
 }

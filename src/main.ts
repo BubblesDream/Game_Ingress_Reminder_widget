@@ -43,6 +43,7 @@ async function main() {
 
   // === 3. 業務邏輯 (Controller Action) ===
   const weeklyCount = streakModel.getWeeklyCount();
+  const weeklyProgress = streakModel.getWeeklyProgress();
   const isTodayChecked = streakModel.isTodayChecked();
 
   if (config.runsInApp) {
@@ -77,6 +78,7 @@ async function main() {
       data,
       t,
       weeklyCount,
+      weeklyProgress,
       images: finalImages,
       files,
       getPath,

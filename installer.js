@@ -40,10 +40,22 @@ const FILES = [
 ];
 
 async function main() {
-    const fm = FileManager.local();
+    // 智慧判斷儲存位置：優先嘗試 iCloud，若失敗則回退到 Local
+    let fm;
+    let locationName = "";
+    try {
+        fm = FileManager.iCloud();
+        fm.documentsDirectory(); // 測試存取權限
+        locationName = "iCloud Drive > Scriptable";
+    } catch (e) {
+        fm = FileManager.local();
+        locationName = "我的 iPhone > Scriptable";
+    }
+
     const bookmarkName = "IngressRepo";
 
     console.log(`🚀 開始安裝 Ingress Widget...`);
+    console.log(`📂 目標位置: ${locationName} > ${bookmarkName}`);
     console.log(`📂 資料來源: ${BASE_URL}`);
 
     // 1. 檢查並建立資料夾
@@ -52,13 +64,12 @@ async function main() {
         dir = fm.bookmarkedPath(bookmarkName);
         console.log(`✅ 找到書籤: ${dir}`);
     } else {
-        // 如果沒有書籤，建立在 Documents/IngressRepo (Scriptable 預設目錄)
+        // 建立在 Documents/IngressRepo
         dir = fm.joinPath(fm.documentsDirectory(), bookmarkName);
         if (!fm.isDirectory(dir)) {
             fm.createDirectory(dir);
             console.log(`✅ 建立目錄: ${dir}`);
         }
-        console.log(`⚠️ 請注意：建議手動將此目錄設定為 File Bookmark，名稱: ${bookmarkName}`);
     }
 
     // 2. 下載檔案
@@ -96,7 +107,7 @@ async function main() {
         msg += `\n失敗檔案:\n${errors.join("\n")}`;
         msg += `\n\n檢查 GitHub URL 是否正確，或檔案是否已上傳。`;
     } else {
-        msg += `\n\n安裝完成！\n請在桌面新增 Scriptable Widget 並指向 main.js`;
+        msg += `\n\n安裝完成！ 🎉\n檔案位置：${locationName} > ${bookmarkName}\n\n請在桌面新增 Scriptable Widget 並指向 main.js`;
     }
 
     let alert = new Alert();

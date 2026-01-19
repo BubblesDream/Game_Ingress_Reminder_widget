@@ -1,20 +1,20 @@
 {
-  "title": "INGRESS 連續駭入",
+  "title": "INGRESS 連續Hack",
   "days_label": "天連續",
-  "weekly_prefix": "本週駭入：",
+  "weekly_prefix": "本週Hack：",
   "weekly_suffix": " 次",
-  "hack_btn": "駭入",
+  "hack_btn": "Hack",
   "quotes_before": [
-    "你真的不打卡嗎？",
+    "你真的不Hack嗎？",
     "都看到了還不點進來",
-    "再不打卡就要明天了",
+    "再不Hack就要明天了",
     "你是不是忘記什麼了",
     "連勝紀錄正在看著你..."
   ],
   "quotes_after": [
     "讚啦👍，明天也要繼續",
-    "再開一次好不好",
-    "打卡得永生，愛因斯坦沒有說過",
+    "再Hack一次好不好",
+    "Hack得永生，愛因斯坦沒有說過",
     "今日任務達成！",
     "為了陣營，幹得好"
   ],

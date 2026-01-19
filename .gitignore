@@ -1,5 +1,15 @@
 node_modules/
-dist/
 .agent/
 .DS_Store
 *.log
+
+# Editor & Team artifacts
+.vscode/
+AG_TEAM.md
+schedule.md
+
+# User Data (Privacy)
+src/ingress_history.json
+
+# Build Output - Explicitly INCLUDED for Installer usage
+!dist/

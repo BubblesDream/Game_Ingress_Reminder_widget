@@ -124,8 +124,16 @@ export class DashboardView implements WidgetView {
         // 邏輯重寫：絕對優先權判斷
         let targetImgPath: string | null = null;
 
-        // 優先權 1: 檢查是否有活動圖 (SS/FS)
-        if (eventCode) {
+        // 優先權 0: 檢查是否已打卡 (Today Checked)
+        if (isTodayChecked) {
+            let afterPath = getPath("ingress_button_after.png");
+            if (files.fileExists(afterPath)) {
+                targetImgPath = afterPath;
+            }
+        }
+
+        // 優先權 1: 如果沒打卡(或找不到After圖)，檢查是否有活動圖 (SS/FS)
+        if (!targetImgPath && eventCode) {
             let evtPath = getPath(`ingress_button_${eventCode}.png`);
             if (files.fileExists(evtPath)) {
                 targetImgPath = evtPath;
